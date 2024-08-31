@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add School
+{% endblock %}
+
+{% block main %}
+<style>
+    .header {
+        display: flex;
+    }
+</style>
+<header class="header">
+    <form action="/">
+        <button class="btn btn-primary home-button" type="submit">Home</button>
+    </form>
+    <h3 class="title">Add School</h3>
+</header>
+<div class="mb-3">
+    <form action="/add" method="post" class="form">
+        <input name="school" type="text" placeholder="School" class="my-input" required>
+        <button type="submit" class="btn btn-primary my-button">Submit</button>
+    </form>
+</div>
+<hr>
+<div class="mb-3">
+    <h3>
+        <style>
+            .paragraph {
+                margin-bottom: 225px;
+            }
+        </style>
+        <p class="paragraph">If your school does not appear in the search results on the homepage, please add it using the above form.
+            You can even add a workplace or something else that hosts events for people to come out to!
+        </p>
+    </h3>
+</div>
+<hr>
+{% endblock %}

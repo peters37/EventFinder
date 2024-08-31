@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Upcoming Events
+{% endblock %}
+
+{% block main %}
+    <style>
+        .header {
+            display: flex;
+        }
+    </style>
+    <header class="header">
+        <form action="/">
+            <button class="btn btn-primary home-button" type="submit">Home</button>
+        </form>
+        <h3 class="title">Upcoming Events for {{ school }}</h3>
+    </header>
+    <style>
+        .my-button {
+            margin-top: 30px;
+            text-align: center;
+            display: inline-block;
+        }
+    </style>
+    <div class="text-center">
+        <form action="/add_event">
+            <button class="btn btn-primary my-button text-center" type="submit">Add Event</button>
+        </form>
+        <h3>
+            <p class="paragraph">Upcoming Events are listed in order of soonest to latest. You can add
+                                 an event using the button above.
+            </p>
+        </h3>
+    </div>
+    <hr>
+    <style>
+        .centered-table {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+        }
+    </style>
+    {% for event in events %}
+    <div class="centered-table">
+        <table class="paragraph">
+            <tr>
+                <thead>
+                    <th>Event</th>
+                    <th>Location</th>
+                    <th>Info</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </thead>
+            </tr>
+            <tr>
+                <td class="table-data">{{ event["name"] }}</td>
+                <td class="table-data">{{ event["location"] }}</td>
+                <td class="table-data">{{ event["info"] }}</td>
+                <td class="table-data">{{ event["date"] }}</td>
+                <td class="table-data">{{ event["digital_time"] }}</td>
+            </tr>
+        </table>
+    </div>
+    <hr>
+    {% endfor %}
+    {% if events == [] %}
+        <h3>
+            <style>
+                .paragraph {
+                    margin-bottom: 120px;
+                }
+            </style>
+            <p class="paragraph">There are no upcoming events.</p>
+        </h3>
+        <hr>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    School Event Finder
+{% endblock %}
+
+{% block main %}
+    <header class="text-center original-header">School Event Finder</header>
+    <div class="mb-3">
+        <form action="/" method="post" class="form">
+            <input type="text" list="schools_list" placeholder="School" required name="school">
+            <datalist id="schools_list">
+                {% for school in schools %}
+                    <option value="{{ school['school'] }}">{{ school["school"] }}</option>
+                {% endfor %}
+            </datalist>
+            <button class="btn btn-primary my-button" type="submit">Search</button>
+        </form>
+        <form action="/add" class="form">
+            <button type="submit" class="btn btn-primary my-button">Add School</button>
+        </form>
+    </div>
+    <hr>
+    <div>
+        <h1>
+            <p class="paragraph"> Welcome to School Event Finder! I created this web application to help students
+                find all the fun activities going on at their school. Select your school and click search
+                to find upcoming events. If you do not see your school in the menu, please add it.
+            </p>
+        </h1>
+    </div>
+    <hr>
+    <script>
+        function ShowAlert(message) {
+            if (message) {
+                alert(message);
+            }
+        }
+        ShowAlert("{{ message }}")
+    </script>
+{% endblock %}
